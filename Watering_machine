@@ -1,0 +1,48 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import pygame
+from pygame.locals import *
+import serial
+import sys
+
+def main():
+    ser = serial.Serial("COM8")#COMport (Arduino接続)
+    moist = [0]*100
+    t = np.arange(0, 100, 1)
+    plt.ion()
+    
+    #pygameの初期化
+    pygame.init()
+    screen = pygame.display.set_mode((200, 200))
+    pygame.display.set_caption("土壌湿度")
+    font = pygame.font.Font(None, 30)
+    
+    while True:
+        data = ser.readline().rstrip() #\nまで読み込んで\nを削除
+        moist.pop(99)
+        moist.insert(0, int(data))
+        
+        
+        line, = plt.plot(t, moist, "r-", label = "Moist")
+        line.set_ydata(moist)
+        plt.title("Real-time inclination moisture in soil")
+        plt.xlabel("Time[s]")
+        plt.ylabel("Inclination moisture in soil")
+        plt.legend(); plt.grid()
+        plt.xlim([1, 100]); plt.ylim([0, 300])
+        plt.draw(); plt.clf()
+        
+        screen.fill((0, 0, 0))
+        text = font.render("Moisture = " + str(data), False, (255, 255, 255))
+        screen.blit(text, (10, 10))
+        pygame.display.flip()
+        
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                ser.close()
+                plt.close()
+                sys.exit()
+                
+if __name__ == '__main__':
+    main()
