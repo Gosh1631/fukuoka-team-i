@@ -5,7 +5,7 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from .models import Coin
 
 class MoneyListView(ListView):
-  model = coin
+  model = Coin
   template_name= 'modey/modey_list.html'
 
 def queryset(self):
