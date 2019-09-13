@@ -10,7 +10,7 @@ import serial,time
 class index(View):
     template_name = "moist.html"
     def response(request):
-        ser = serial.Serial("/dev/ttyUSB0",9600)
+        ser = serial.Serial("COM8",9600)
         rate = ser.readline()
         params = {
             "water_level": rate,
