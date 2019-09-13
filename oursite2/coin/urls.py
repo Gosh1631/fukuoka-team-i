@@ -19,5 +19,5 @@ from django.conf.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('money/', include('coin.urls'))
+    path('ai_image', include('coin.urls'))
 ]
