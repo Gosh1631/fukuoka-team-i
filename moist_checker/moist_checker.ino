@@ -12,7 +12,7 @@ void setup() {
 Serial.begin(9600);
 pinMode(pomp,OUTPUT);
 
-MsTimer2::set(100,pomp_work);
+MsTimer2::set(1000,pomp_work);
 MsTimer2::start();
 }
 

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+    
+        <title>自動水やり機</title>
+    </head>
+    <body>
+        <p class="level">
+            {{water_level}}
+        </p>
+        <div class="response">
+        {% if status == 0%}
+            <p>水分が足りていないです。<br>
+            給水を開始します。</p>
+        {% elif status == 1%}
+            <p>水分が減少しています。<br>
+            水の準備をしておいてください。</p>
+        {% else %}
+            <p>十分に水があります。</p>
+        {% endif %}
+        </div>
+    </body>
