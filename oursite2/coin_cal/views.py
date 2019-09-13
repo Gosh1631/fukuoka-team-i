@@ -1,7 +1,12 @@
 from django.shortcuts import render
 
 # Create your views here.
-class Coin(models.Model):
-  class Meta:
-    db_table = ''     
-sum_of_coin = models.IntegerField()
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from .models import Coin
+
+class MoneyListView(ListView):
+  model = coin
+  template_name= 'modey/modey_list.html'
+
+def queryset(self):
+  return money.objects.all()
