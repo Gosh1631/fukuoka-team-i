@@ -6,7 +6,7 @@ from .models import Coin
 
 class MoneyListView(ListView):
   model = Coin
-  template_name= 'modey/modey_list.html'
+  template_name= 'coin_cal/coin_cal_list.html'
 
 def queryset(self):
   return money.objects.all()
