@@ -36,7 +36,7 @@ void pomp_work(){
   if(check==1){
     digitalWrite(pomp,HIGH);
   }
-  else{
+  if(check==0){
     digitalWrite(pomp,LOW);
   }
 }

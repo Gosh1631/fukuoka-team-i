@@ -1,7 +1,7 @@
 const SerialPort = require('serialport');
 const Readline = SerialPort.parsers.Readline;
 
-const portName = '/dev/cu.usbmodem14401';
+const portName = '/dev/cu.usbmodem14401';//ポート番号の指定
 const port = new SerialPort(portName, { baudRate: 9600 })
   .pipe(new Readline())
   .on('data', data => {
