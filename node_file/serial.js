@@ -7,7 +7,7 @@ const port = new SerialPort(portName, { baudRate: 9600 })
   .on('data', data => {
     try {
       let jsonData = JSON.parse(data);
-      console.log(jsonData);  
+    console.log(jsonData);  
     } catch (error) {
       // 開始時などデータが受信できないことがある
       return;
